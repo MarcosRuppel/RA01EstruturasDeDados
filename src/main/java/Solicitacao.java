@@ -1,14 +1,12 @@
 public class Solicitacao {
     private String id;
     private String descricao;
-    private final String data;
-    private final String hora;
+    private final String dataSolicitacao;
 
-    public Solicitacao(String id, String descricao, String data, String hora) {
+    public Solicitacao(String id, String descricao, String dataHora) {
         this.id = id;
         this.descricao = descricao;
-        this.data = data;
-        this.hora = hora;
+        this.dataSolicitacao = dataHora;
     }
     public String getId() {
         return id;
@@ -22,9 +20,8 @@ public class Solicitacao {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-    public String getData() { return data; }
-    public String getHora() { return hora; }
+    public String getDataHora() { return dataSolicitacao; }
     public String toString() {
-        return "[id=" + id + ", descricao=" + descricao + ", data=" + data + ", hora=" + hora + "]";
+        return "[id=" + id + ", descricao=" + descricao + ", data=" + dataSolicitacao + "]";
     }
 }

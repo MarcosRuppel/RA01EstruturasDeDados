@@ -5,16 +5,13 @@ Avaliação RA01 - Pilhas, Filas e Listas encadeadas
 Equipe: Enzo Curcio Stival, Hiann Wonsowicz Padilha, Marcos Paulo Ruppel
  */
 
-import java.time.format.DateTimeFormatter;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.time.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void menuInicial(Fila f, Pilha p) {
         Scanner teclado = new Scanner(System.in);
-        Fila fila = new Fila();
-        Pilha pilha = new Pilha();
         boolean continuar = true;
         while (continuar) {
             try {
@@ -39,17 +36,17 @@ public class Main {
                         System.out.print("\nInforme o id do cliente: ");
                         String idCliente = teclado.nextLine();
                         System.out.print("\nInforme o nome do cliente: ");
-                        String nome = teclado.next();
+                        String nome = teclado.nextLine();
                         System.out.print("\nInforme o motivo do atendimento: ");
-                        String motivo = teclado.next();
-                        fila.adicionar(new Cliente(idCliente, nome, motivo));
+                        String motivo = teclado.nextLine();
+                        f.adicionar(new Cliente(idCliente, nome, motivo));
                         System.out.print("\nCliente adicionado com sucesso!");
                         System.out.println("\nPressione Enter para continuar...");
                         teclado.nextLine();
                         break;
                     case 2:
                         try {
-                            Cliente cliente = fila.atenderPrimeiro();
+                            Cliente cliente = f.atenderPrimeiro();
                             System.out.print("\nCliente atendido: " + cliente.toString());
                         } catch (NullPointerException e) {
                             System.out.println("\nNao ha clientes na fila de atendimento!");
@@ -63,16 +60,15 @@ public class Main {
                         String idSolicit = teclado.nextLine();
                         System.out.print("\nInforme a descricao do solicitacao: ");
                         String descricao = teclado.nextLine();
-                        String dataSolicitacao = LocalDate.now().toString();
-                        String horaSolicitacao = LocalTime.now().toString();
-                        pilha.adicionar(new Solicitacao(idSolicit, descricao, dataSolicitacao, horaSolicitacao));
+                        String dataSolicitacao = LocalDateTime.now().toString();
+                        p.adicionar(new Solicitacao(idSolicit, descricao, dataSolicitacao));
                         System.out.print("\nSolicitacao adicionada com sucesso!");
                         System.out.println("\nPressione Enter para continuar...");
                         teclado.nextLine();
                         break;
                     case 4:
                         try {
-                            Solicitacao solicitacao = pilha.retirar();
+                            Solicitacao solicitacao = p.retirar();
                             System.out.print("\nSolicitacao retirada: " + solicitacao.toString());
                         } catch (NullPointerException e) {
                             System.out.println("\nNao ha solicitacoes para atender!");
@@ -82,12 +78,12 @@ public class Main {
                         }
                         break;
                     case 5:
-                        fila.print();
+                        f.print();
                         System.out.println("\nPressione Enter para continuar...");
                         teclado.nextLine();
                         break;
                     case 6:
-                        pilha.print();
+                        p.print();
                         System.out.println("\nPressione Enter para continuar...");
                         teclado.nextLine();
                         break;
@@ -102,5 +98,41 @@ public class Main {
                 teclado.nextLine();  // Aguarda Enter
             }
         }
+    }
+
+    public static void main(String[] args) {
+        Fila fila = new Fila();
+        Pilha pilha = new Pilha();
+        Solicitacao[] historico = {
+                new Solicitacao("REQ001", "Instalação de software", "2024-08-20 10:30"),
+                new Solicitacao("REQ002", "Manutenção preventiva", "2024-08-20 11:00"),
+                new Solicitacao("REQ003", "Atualização de sistema", "2024-08-20 11:30"),
+                new Solicitacao("REQ004", "Suporte técnico", "2024-08-20 12:00"),
+                new Solicitacao("REQ005", "Troca de equipamento", "2024-08-20 12:30"),
+                new Solicitacao("REQ006", "Consulta de garantia", "2024-08-20 13:00"),
+                new Solicitacao("REQ007", "Reparo de impressora", "2024-08-20 13:30"),
+                new Solicitacao("REQ008", "Configuração de rede", "2024-08-20 14:00"),
+                new Solicitacao("REQ009", "Restauração de dados", "2024-08-20 14:30"),
+                new Solicitacao("REQ010", "Consulta técnica", "2024-08-20 15:00")
+        };
+        Cliente[] filadeatendimento = {
+                new Cliente("CLI001", "Maria Silva", "Dúvida sobre produto"),
+                new Cliente("CLI002", "João Souza", "Reclamação de serviço"),
+                new Cliente("CLI003", "Ana Costa", "Solicitação de reembolso"),
+                new Cliente("CLI004", "Pedro Alves", "Informações de entrega"),
+                new Cliente("CLI005", "Carla Dias", "Agendamento de visita"),
+                new Cliente("CLI006", "Lucas Martins", "Alteração de pedido"),
+                new Cliente("CLI007", "Patrícia Rocha", "Cancelamento de contrato"),
+                new Cliente("CLI008", "Rafael Lima", "Renovação de assinatura"),
+                new Cliente("CLI009", "Fernanda Gomes", "Suporte para instalação"),
+                new Cliente("CLI010", "Carlos Eduardo", "Pedido de orçamento")
+        };
+        for (Solicitacao solicitacao : historico) {
+            pilha.adicionar(solicitacao);
+        }
+        for (Cliente cliente : filadeatendimento) {
+            fila.adicionar(cliente);
+        }
+        menuInicial(fila, pilha);
     }
 }
