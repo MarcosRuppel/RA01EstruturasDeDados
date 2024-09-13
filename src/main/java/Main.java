@@ -5,6 +5,7 @@ Avaliação RA01 - Pilhas, Filas e Listas encadeadas
 Equipe: Enzo Curcio Stival, Hiann Wonsowicz Padilha, Marcos Paulo Ruppel
  */
 
+import java.time.format.DateTimeFormatter;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.time.*;
@@ -36,8 +37,7 @@ public class Main {
                 switch (opcao) {
                     case 1:
                         System.out.print("\nInforme o id do cliente: ");
-                        int idCliente = teclado.nextInt();
-                        teclado.nextLine();
+                        String idCliente = teclado.nextLine();
                         System.out.print("\nInforme o nome do cliente: ");
                         String nome = teclado.next();
                         System.out.print("\nInforme o motivo do atendimento: ");
@@ -60,10 +60,9 @@ public class Main {
                         break;
                     case 3:
                         System.out.print("\nInforme o id do solicitacao: ");
-                        int idSolicit = teclado.nextInt();
-                        teclado.nextLine();
+                        String idSolicit = teclado.nextLine();
                         System.out.print("\nInforme a descricao do solicitacao: ");
-                        String descricao = teclado.next();
+                        String descricao = teclado.nextLine();
                         String dataSolicitacao = LocalDate.now().toString();
                         String horaSolicitacao = LocalTime.now().toString();
                         pilha.adicionar(new Solicitacao(idSolicit, descricao, dataSolicitacao, horaSolicitacao));

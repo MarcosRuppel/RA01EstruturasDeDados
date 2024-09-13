@@ -1,19 +1,19 @@
 public class Solicitacao {
-    private int id;
+    private String id;
     private String descricao;
     private final String data;
     private final String hora;
 
-    public Solicitacao(int id, String descricao, String data, String hora) {
+    public Solicitacao(String id, String descricao, String data, String hora) {
         this.id = id;
         this.descricao = descricao;
         this.data = data;
         this.hora = hora;
     }
-    public int getId() {
+    public String getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
     public String getDescricao() {
