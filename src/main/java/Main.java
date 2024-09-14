@@ -1,8 +1,10 @@
-/*
-PUCPR - Escola Politécnica - Bacharelado em Ciência da Computação
-Resolução de Problemas de Natureza Estruturada - Prof. Andrey Cabral Meira
-Avaliação RA01 - Pilhas, Filas e Listas encadeadas
-Equipe: Enzo Curcio Stival, Hiann Wonsowicz Padilha, Marcos Paulo Ruppel
+/**
+ * Programa que simula um sistema de gerenciamento de atendimento ao cliente, implementando
+ * estruturas de dados do tipo pilha e fila. Parte do RA01 da disciplina de Resolução de Problemas Estruturados
+ * em Computação.
+ * @version 2.0(REV3)
+ * @author Enzo Curcio Stival, Hiann Wonsowicz Padilha, Marcos Paulo Ruppel
+ * @since 2024-09-13
  */
 
 import java.util.InputMismatchException;
@@ -10,6 +12,11 @@ import java.util.Scanner;
 import java.time.*;
 
 public class Main {
+    /**
+     * Apresenta um menu de opções selecionáveis das funcionalidades de interação do sistema.
+     * @param f Fila a ser manipulada pelo programa.
+     * @param p Pilha a ser manipulada pelo programa
+     */
     public static void menuInicial(Fila f, Pilha p) {
         Scanner teclado = new Scanner(System.in);
         boolean continuar = true;

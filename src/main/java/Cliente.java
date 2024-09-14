@@ -1,3 +1,6 @@
+/**
+ * Objeto que contém atributos e métodos de um Cliente.
+ */
 public class Cliente {
     private String id;
     private String nome;
@@ -14,6 +17,10 @@ public class Cliente {
     public void setNome(String nome) { this.nome = nome; }
     public String getMotivo() { return motivo; }
     public void setMotivo(String motivo) { this.motivo = motivo; }
+    /**
+     * Consolida os atributos da classe em forma de String.
+     * @return String contendo os dados
+     */
     public String toString() {
         return "[id=" + id + ", nome=" + nome + ", motivo=" + motivo + "]";
     }

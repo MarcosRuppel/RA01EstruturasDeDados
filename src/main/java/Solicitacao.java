@@ -1,3 +1,6 @@
+/**
+ * Objeto que contem os atributos e métodos de uma solicitacao.
+ */
 public class Solicitacao {
     private String id;
     private String descricao;
@@ -21,6 +24,11 @@ public class Solicitacao {
         this.descricao = descricao;
     }
     public String getDataHora() { return dataSolicitacao; }
+
+    /**
+     * Consolida os atributos da classe em forma de String.
+     * @return String contendo os dados
+     */
     public String toString() {
         return "[id=" + id + ", descricao=" + descricao + ", data=" + dataSolicitacao + "]";
     }

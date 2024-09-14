@@ -1,11 +1,24 @@
+/**
+ * Define um nó de uma lista encadeada.
+ * Pode armazenar um objeto do tipo Solicitacao ou Cliente.
+ */
 public class Node {
     private Node proximo;
     private Solicitacao solicitacao;
     private Cliente cliente;
 
+    /**
+     * Define uma Solicitacao como um nó da lista encadeada.
+     * @param s - Solicitacao.
+     */
     public Node(Solicitacao s) {
         this.solicitacao = s;
     }
+
+    /**
+     * Define um Cliente como um nó da lista encadeada.
+     * @param c - Cliente.
+     */
     public Node(Cliente c) {
         this.cliente = c;
     }
